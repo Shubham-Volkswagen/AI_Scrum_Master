@@ -2,7 +2,7 @@
 name = "foreman-enhanced"
 version = "0.2.0"
 description = "Agent-assisted Scrum Master workspace"
-requires-python = ">=3.11,<3.14"
+requires-python = ">=3.11,<3.15"
 dependencies = [
   "streamlit>=1.38",
   "crewai>=0.80",
