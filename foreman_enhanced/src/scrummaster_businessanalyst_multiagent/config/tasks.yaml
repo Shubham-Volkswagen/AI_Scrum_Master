@@ -1,0 +1,22 @@
+intake_task:
+  description: |
+    Analyze this raw demand:
+    {transcript}
+    Detect the intake mode, normalize the demand, list assumptions, and ask concise blocking clarification questions.
+  expected_output: A structured demand analysis for downstream decomposition.
+
+decomposition_task:
+  description: |
+    Using the intake analysis, create a complete hierarchy of Epics, Features, Stories and Tasks.
+    Preserve parent identifiers. Include QA, security, compliance, observability, CI/CD, release and documentation work where supported.
+    Map every Epic to a source section and declare ticket dependencies with reasons.
+  expected_output: A traceable dependency-aware backlog blueprint.
+
+specification_task:
+  description: |
+    Convert the blueprint into the required BacklogPackage JSON schema.
+    Use unique local IDs such as E-001, F-001, S-001 and T-001.
+    Write acceptance criteria as individual Given/When/Then strings and supply Definition of Done.
+    Estimate only Stories, Tasks and Bugs using 2,3,5,8,13 and add confidence and reason.
+    Mark unresolved items NEEDS_CLARIFICATION and generate missing_details questions.
+  expected_output: Valid JSON matching BacklogPackage exactly.
