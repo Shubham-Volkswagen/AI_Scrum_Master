@@ -1,4 +1,5 @@
 import os
+import streamlit as st
 from crewai import Agent, Task, Crew, Process, LLM
 from crewai.project import CrewBase, agent, crew, task
 from .models import BacklogPackage
@@ -9,8 +10,18 @@ class ForemanBacklogCrew:
     tasks_config = "config/tasks.yaml"
 
     def __init__(self):
-        self.llm = LLM(model="gemini/gemini-2.5-flash", api_key=os.getenv("GEMINI_API_KEY"), temperature=0.1)
 
+    self.llm = LLM(
+        model="openai/smart-router",
+        api_key=st.secrets["LLMAAS_TOKEN"],
+        api_base="https://llmapi.ai.vwgroup.com",
+        extra_headers={
+            "X-LLM-API-CLIENT-ID":
+                f"Bearer {st.secrets['LLMAAS_VIRTUAL_KEY']}"
+        },
+        temperature=0.1
+    )
+    
     @agent
     def intake_analyst(self):
         return Agent(config=self.agents_config["intake_analyst"], llm=self.llm, verbose=True)
