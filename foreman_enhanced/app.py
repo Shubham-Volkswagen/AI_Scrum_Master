@@ -4,6 +4,13 @@ import pypdf
 from docx import Document
 import streamlit as st
 from dotenv import load_dotenv
+import sys
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+SRC_DIR = os.path.join(CURRENT_DIR, "src")
+
+if SRC_DIR not in sys.path:
+    sys.path.insert(0, SRC_DIR)
 
 from scrummaster_businessanalyst_multiagent.crew import ForemanBacklogCrew
 from scrummaster_businessanalyst_multiagent.models import BacklogPackage
