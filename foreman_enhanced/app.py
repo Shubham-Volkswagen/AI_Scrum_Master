@@ -49,7 +49,6 @@ if page == "1. Intake":
     raw = extract(uploaded) if uploaded else text
     if st.button("Generate backlog", type="primary"):
         if not raw.strip(): st.error("Provide input first.")
-        elif not os.getenv("GEMINI_API_KEY"): st.error("GEMINI_API_KEY is missing.")
         else:
             with st.spinner("Foreman is shaping the demand..."):
                 output = ForemanBacklogCrew().crew().kickoff(inputs={"transcript": raw})
