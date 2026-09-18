@@ -20,7 +20,7 @@ class ForemanBacklogCrew:
             "X-LLM-API-CLIENT-ID":
                 f"Bearer {st.secrets['LLMAAS_VIRTUAL_KEY']}"
         },
-        temperature=0.1
+        temperature=0
     )
     
     @agent
