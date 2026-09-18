@@ -15,7 +15,7 @@ class ForemanBacklogCrew:
         self.llm = LLM(
         model="gpt-4o",
         api_key=access_token,
-        api_base="https://llmapi.ai.vwgroup.com",
+        base_url="https://llmapi.ai.vwgroup.com",
         extra_headers={
             "X-LLM-API-CLIENT-ID":
                 f"Bearer {st.secrets['LLMAAS_VIRTUAL_KEY']}"
