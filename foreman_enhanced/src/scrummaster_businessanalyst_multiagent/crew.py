@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+from .llmaas_auth import get_token
 from crewai import Agent, Task, Crew, Process, LLM
 from crewai.project import CrewBase, agent, crew, task
 from .models import BacklogPackage
@@ -10,9 +11,10 @@ class ForemanBacklogCrew:
     tasks_config = "config/tasks.yaml"
 
     def __init__(self):
+        access_token = get_token()
         self.llm = LLM(
         model="openai/smart-router",
-        api_key=st.secrets["LLMAAS_TOKEN"],
+        api_key=access_token,
         api_base="https://llmapi.ai.vwgroup.com",
         extra_headers={
             "X-LLM-API-CLIENT-ID":
