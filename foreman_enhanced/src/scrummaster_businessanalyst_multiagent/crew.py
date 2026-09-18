@@ -10,8 +10,7 @@ class ForemanBacklogCrew:
     tasks_config = "config/tasks.yaml"
 
     def __init__(self):
-
-    self.llm = LLM(
+        self.llm = LLM(
         model="openai/smart-router",
         api_key=st.secrets["LLMAAS_TOKEN"],
         api_base="https://llmapi.ai.vwgroup.com",
