@@ -13,7 +13,7 @@ class ForemanBacklogCrew:
     def __init__(self):
         access_token = get_token()
         self.llm = LLM(
-        model="openai/smart-router",
+        model="gpt-4o",
         api_key=access_token,
         api_base="https://llmapi.ai.vwgroup.com",
         extra_headers={
